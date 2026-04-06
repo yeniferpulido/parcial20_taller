@@ -1,10 +1,10 @@
 const http = require("http");
 const fs = require("fs/promises");
 const path = require("path");
-const handleItemsRoutes = require("./routes/items");
+
 
 const PORT = 3000;
-const PUBLIC_PATH = path.join(__dirname, "..", "public");
+const PUBLIC_PATH = path.join(__dirname);
 
 const MIME_TYPES = {
     ".html": "text/html",
@@ -20,8 +20,7 @@ const server = http.createServer(async (req, res) => {
     // Imprimir peticiones
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
 
-    // Rutas API (items.js)
-    if (handleItemsRoutes(req, res)) return;
+    
 
     // Archivos estáticos
     try {
